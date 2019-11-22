@@ -4,4 +4,4 @@ __tests__/coverage/*
 node_modules
 images
 yarn.lock
-src/log/*
+src/log/debug.log
