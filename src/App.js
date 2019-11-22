@@ -25,6 +25,7 @@ class App {
     this.database()
     this.middlewares()
     this.routes()
+      
   }
 
   database () { // make connection
@@ -34,12 +35,12 @@ class App {
   middlewares () { // setup middleware
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: true })) //If extended is true, means you can post "nested object"
-
-    if (fs.existsSync(logPath)) {
+    this.app.use(logger(CONSTANTS.LOGGER_FORMAT)); // DISPLAY LOG ON TERMINAL
+    if (fs.existsSync(logPath)) { // WRITE LOGS ON DEBUG.LOG FILE
       this.app.use(logger(CONSTANTS.LOGGER_FORMAT,{
         stream: fs.createWriteStream(logPath, {flags:'a'})
       }))
-    } else {
+    } else { // WRITE LOGS ON DEBUG.LOG FILE
       fs.mkdirSync(path.dirname(logPath));
       fs.writeFileSync(logPath, {flags:'wx'});
       this.app.use(logger(CONSTANTS.LOGGER_FORMAT,{

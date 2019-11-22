@@ -32,7 +32,8 @@ const CONSTANTS = {
     UNIQUE_INDEX:11000,
     MAX_FILE_SIZE:1000000,
     FILE_EXTENSION_MATCH:/\.(jpg|JPG|png)$/,
-    ORIGINAL:"original",
+    ORIGINAL:"./original",
+    IMAGE_DIRECTORY_PATH:"images",
     API_STATUS_CODES: {
         SUCCESS: 200,        
         NO_CONTENT:204,

@@ -1,9 +1,11 @@
 const multer = require('multer');
 const CONSTANTS = require('./app.constants')
+
 /**
  * @constant storage
  * @description storage for upload a file in directory
  */
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
 		cb(null, 'images')

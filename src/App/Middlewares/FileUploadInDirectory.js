@@ -1,3 +1,11 @@
+const fs = require('fs');
+const CONSTANTS = require('../../Config/app.constants')
+const imageDirPath = './' + CONSTANTS.IMAGE_DIRECTORY_PATH;
+// CREATE DIRECTORY IF NOT EXIST
+if (!fs.existsSync(imageDirPath)){
+    fs.mkdirSync(imageDirPath);
+} 
+
 /**
  * @middleware FileUploadInDirectory
  * @method single
