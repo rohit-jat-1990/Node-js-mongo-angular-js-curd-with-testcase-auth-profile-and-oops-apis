@@ -36,6 +36,8 @@ class App {
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: true })) //If extended is true, means you can post "nested object"
     this.app.use(logger(CONSTANTS.LOGGER_FORMAT)); // DISPLAY LOG ON TERMINAL
+    this.app.use(cookieParser())
+    this.app.use(cors())
     if (fs.existsSync(logPath)) { // WRITE LOGS ON DEBUG.LOG FILE
       this.app.use(logger(CONSTANTS.LOGGER_FORMAT,{
         stream: fs.createWriteStream(logPath, {flags:'a'})
@@ -47,8 +49,6 @@ class App {
       stream: fs.createWriteStream(logPath, {flags:'a'})
       }));
     }
-    this.app.use(cookieParser())
-    this.app.use(cors())
   }
 
   routes () { // setup routes
